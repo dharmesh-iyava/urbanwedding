@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for i in object_list %}
+        <div class="col-lg-4 mt-4">
+            <div class="shadow p-2">
+                {% if i.tag %}
+                <span class="notify-badge badge badge-dark">Popular</span>
+                {% endif %}
+                <img src="{% static 'images/image-1.jpg' %}" alt="" class="img-fluid rounded">
+                <p class="float-right bg-success p-2 mt-3 text-white"><i class="fa fa-star"> {{i.rating}}</i></p>
+                <h5 class="text-capitalize mt-2 mr-2">{{i.title}}</h5>
+                <a href="" class="text-capitalize text-dark">{{i.location}}</a>
+                <hr>
+                <a href="{{i.get_absolute_url}}" class="float-right btn btn-outline-secondary">Explore</a>
+                <h5 class="py-1">Rs.{{i.min_price}}/-</h5>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
